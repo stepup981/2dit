@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2dit test</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<!-- 1 задание. Сделать аккардеон -->
+  <div class="block">
+    <div class="block__content">
+      <h2 class="block__title">На что рассчитывать при взыскании неустойки по ДДУ?</h2>
+      <div class="block__info">Когда застройщик нарушает сроки сдачи по ДДУ, вы как дольщик имеете право требовать
+        неустойку за просрочку, а также компенсацию убытков, вызванных этой просрочкой.
+        Само собой, застройщику невыгодно добровольно выплачивать вам компенсацию.
+        Когда дело доходит до суда, суд урезает сумму неустойки на основании ст. 333 ГК РФ. Это урезание практически
+        неизбежно.
+        Основная наша задача состоит в том, чтобы взыскать неустойку по ДДУ в максимальном размере,
+        т.е. избежать сильного ее урезания. Вот что вы можете требовать от застройщика.</div>
+    </div>
+    <div class="block__accardion">
+      <ul class="block__dropdown"></ul>
+    </div>
+  </div>
+<!-- конец 1 задания -->
+
+<!-- 2 задание. сделать каталог карточек со стульями -->
+  <div class="catalog">
+    <div class="catalog__card">
+      <div class="catalog__instock"></div>
+      <div class="catalog__help"></div>
+      <img class="catalog__img" src="" alt="">
+      <div class="catalog__info">
+        <p class="catalog__category"></p>
+        <h1 class="catalog__title"></h1>
+        <p class="catalog__article"></p>
+        <p class="catalog__price"></p>
+      </div>
+    </div>
+  </div>
+<!-- конец 2 задания -->
+
+<!-- 3 задание. сверстать два блока с информацией о банке -->
+  <div class="bank">
+    <div class="bank__flex">
+      <div class="bank__company">
+        <div class="bank__description">
+          <p class="bank__title-count">.01</p>
+          <h1 class="bank__title">С расчётного счёта компании</h1>
+        </div>
+        <p class="bank__info">Diam aliquam quis blandit sollicitudin sit ut venenatis dictum fusce gravida, porta
+          commodo
+          natoque tristique magna massa laoreet luctus. Ligula per justo condimentum et ut dignissim ipsum, consequat
+          tristique sollicitudin convallis bibendum risus lorem nostra, cubilia purus odio tincidunt amet euismod.
+          Luctus
+          nascetur urna adipiscing nisl libero bibendum maecenas accumsan mi, ligula consectetur congue nam magnis
+          posuere
+          purus. Himenaeos habitasse nunc sociosqu erat aliquam class justo porta dictumst, pulvinar id dignissim
+          facilisi
+          dolor tincidunt in non tellus, nam posuere laoreet turpis diam ut placerat lacus. Facilisi nec sagittis
+          interdum
+          blandit urna turpis sociosqu risus, viverra class odio aliquet cras morbi nunc egestas convallis, habitasse
+          mollis mi maximus donec congue commodo. Rutrum turpis diam ut placerat lacus. Facilisi nec sagittis interdum
+          blandit urna turpis sociosqu risus, viverra class odio aliquet cras morbi nunc egestas convallis, habitasse
+          mollis mi maximus donec congue commodo. Rutrum </p>
+      </div>
+      <img class="bank__image" src="./assets/task3/photo1.png" alt="">
+    </div>
+    <div class="bank__flex-reverse">
+      <div class="bank__company">
+        <div class="bank__description-reverse">
+          <p class="bank__title-count"><span style="color: white;">.02</span></p>
+          <h1 class="bank__title">С карты через онлайн банк<br> физлица или в отделении банка</h1>
+        </div>
+        <p class="bank__info-reverse">Diam aliquam quis blandit sollicitudin sit ut venenatis dictum fusce gravida,
+          porta
+          commodo natoque tristique magna massa laoreet luctus. Ligula per justo condimentum et ut dignissim ipsum,
+          consequat tristique sollicitudin convallis bibendum risus lorem nostra, cubilia purus odio tincidunt amet
+          euismod. Luctus nascetur urna adipiscing nisl libero bibendum maecenas accumsan mi, ligula consectetur congue
+          nam magnis posuere purus. Himenaeos habitasse nunc sociosqu erat aliquam class justo porta dictumst, pulvinar
+          id dignissim facilisi dolor tincidunt in non tellus, nam posuere laoreet turpis diam ut placerat lacus. </p>
+      </div>
+      <img class="bank__image" src="./assets/task3/photo2.png" alt="">
+    </div>
+  </div>
+<!-- конец 3 задания -->
+
+<!-- 4 задание. Сделать форму отправки  -->
+<div class="form">
+    <div class="form__content">
+      <h1 class="form__title">Оставьте заявку</h1>
+      <p class="form__subtitle">И наш специалист свяжется с вами</p>
+      <form id="create-application-form" class="form__input">
+        <input class="form__input-text" type="text" id="name" placeholder="Введите имя">
+        <div class="form__phone">
+          <img class="form__input-icon" src="./assets/task4/russia.png" alt="">
+          <input class="form__input-text" type="tel" id="phone" placeholder="+7 (___) ___-__-__"
+            pattern="^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$" required>
+        </div>
+        <input class="form__input-text" type="email" id="email" placeholder="Эл. почта">
+      </form>
+      <div class="form__subs">
+        <p class="form__text">
+          Нажимая кнопку, я принимаю
+          <a class="form__link" href="#">пользовательское соглашение</a>,
+          соглашаюсь с политикой<br> конфиденциальности,
+          условиями пользования сайтом,
+          передачей и обработкой моих персональных данных
+        </p>
+        <button id="submitButton" class="form__btn">Оформить заявку</button>
+      </div>
+    </div>
+  </div>
+<!-- конец 4 задания -->
+
+  <script src="script.js"></script>
+</body>
+
+</html>
