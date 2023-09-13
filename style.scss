@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600&display=swap');
+
 
 @font-face {
   font-family: 'Proxima Nova Rg';
@@ -37,6 +39,36 @@
     url('./fonts/gotham/GothamPro.woff') format('woff'),
     url('./fonts/gotham/GothamPro.ttf') format('truetype');
   font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mail Sans';
+  src: local('Mail Sans Roman Regular'), local('Mail-Sans-Roman-Regular'),
+    url('./fonts/malisansroman/MailSansRoman-Regular.woff2') format('woff2'),
+    url('./fonts/malisansroman/MailSansRoman-Regular.woff') format('woff'),
+    url('./fonts/malisansroman/MailSansRoman-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mail Sans';
+  src: local('Mail Sans Medium'), local('Mail-Sans-Medium'),
+    url('./fonts/malisansroman/MailSansRoman-Medium.woff2') format('woff2'),
+    url('./fonts/malisansroman/MailSansRoman-Medium.woff') format('woff'),
+    url('./fonts/malisansroman/MailSansRoman-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mail Sans';
+  src: local('Mail Sans Roman DemiBold'), local('Mail-Sans-Roman-DemiBold'),
+    url('./fonts/malisansroman/MailSansRoman-DemiBold.woff2') format('woff2'),
+    url('./fonts/malisansroman/MailSansRoman-DemiBold.woff') format('woff'),
+    url('./fonts/malisansroman/MailSansRoman-DemiBold.ttf') format('truetype');
+  font-weight: 600;
   font-style: normal;
 }
 
@@ -194,6 +226,32 @@ $colorTaskSecond: rgba(38, 78, 88, 1);
     font-size: 14px;
     line-height: 17px;
   }
+
+  &__helpspan1,
+  &__helpspan2,
+  &__helpspan3 {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 5px 5px 10px;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: auto auto;
+  }
+
+  &__helpspan1 {
+    background-color: rgba(163, 32, 24, 1);
+    background-image: url(./assets/task2/star.svg);
+  }
+
+  &__helpspan2 {
+    background-color: rgba(224, 205, 28, 1);
+    background-image: url(./assets/task2/discount.svg);
+  }
+
+  &__helpspan3 {
+    background-color: rgba(8, 122, 40, 1);
+    background-image: url(./assets/task2/rocket.svg);
+  }
 }
 
 .bank {
@@ -291,6 +349,7 @@ $colorTaskSecond: rgba(38, 78, 88, 1);
     font-weight: 700;
     line-height: 73px;
     letter-spacing: -3%;
+    margin-bottom: -5px;
   }
 
   &__subtitle {
@@ -375,4 +434,136 @@ $colorTaskSecond: rgba(38, 78, 88, 1);
 :-ms-input-placeholder {
   /* Internet Explorer 10+ */
   color: white;
+}
+
+.sale {
+  margin: 50px 155px;
+
+  &__toggle {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Commissioner', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: -40px;
+  }
+
+  &__switch {
+    position: relative;
+    display: inline-block;
+    width: 33px;
+    height: 20px;
+  }
+
+  &__period {
+    color: rgba(98, 98, 98, 1);
+  }
+
+  &__plan {
+    color: rgba(167, 167, 167, 1);
+  }
+
+  &__switch input {
+    display: none;
+  }
+
+  &__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(232, 61, 70, 1);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  &__slider:before {
+    position: absolute;
+    content: "";
+    height: 11px;
+    width: 11px;
+    left: 4px;
+    bottom: 4.5px;
+    background-color: rgba(249, 166, 32, 1);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked+&__slider {
+    background-color: #2196F3;
+  }
+
+  input:focus+&__slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked+&__slider:before {
+    -webkit-transform: translateX(14px);
+    -ms-transform: translateX(14px);
+    transform: translateX(14px);
+  }
+
+  &__slider.round {
+    border-radius: 34px;
+  }
+
+  &__slider.round:before {
+    border-radius: 50%;
+  }
+
+  &__title {
+    font-family: 'Commissioner', sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 50px;
+    color: rgba(38, 36, 36, 1);
+    margin-bottom: -20px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  &__block {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__subtitle {
+    position: relative;
+    font-family: 'Commissioner', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 25px;
+    color: rgba(98, 98, 98, 1);
+    white-space: nowrap;
+  }
+
+  &__border {
+    border-bottom: 1px solid rgba(228, 223, 213, 1);
+    transform: translateY(-45%);
+    width: 100%;
+  }
+
+  &__content {
+    gap: 20px;
+    font-family: 'Mail Sans';
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__canvas {
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.07);
+    max-width: 240px;
+    max-height: 395px;
+    border-radius: 10px;
+    padding: 0px 10px 0px 10px;
+  }
 }

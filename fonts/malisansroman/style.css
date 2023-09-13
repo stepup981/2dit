@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Mail Sans Roman';
+    src: local('Mail Sans Roman DemiBold'), local('Mail-Sans-Roman-DemiBold'),
+        url('MailSansRoman-DemiBold.woff2') format('woff2'),
+        url('MailSansRoman-DemiBold.woff') format('woff'),
+        url('MailSansRoman-DemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }

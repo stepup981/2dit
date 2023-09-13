@@ -6,10 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2dit test</title>
   <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-<!-- 1 задание. Сделать аккардеон -->
+  <!-- 1 задание. Сделать аккардеон -->
   <div class="block">
     <div class="block__content">
       <h2 class="block__title">На что рассчитывать при взыскании неустойки по ДДУ?</h2>
@@ -25,9 +26,9 @@
       <ul class="block__dropdown"></ul>
     </div>
   </div>
-<!-- конец 1 задания -->
+  <!-- конец 1 задания -->
 
-<!-- 2 задание. сделать каталог карточек со стульями -->
+  <!-- 2 задание. сделать каталог карточек со стульями -->
   <div class="catalog">
     <div class="catalog__card">
       <div class="catalog__instock"></div>
@@ -41,9 +42,9 @@
       </div>
     </div>
   </div>
-<!-- конец 2 задания -->
+  <!-- конец 2 задания -->
 
-<!-- 3 задание. сверстать два блока с информацией о банке -->
+  <!-- 3 задание. сверстать два блока с информацией о банке -->
   <div class="bank">
     <div class="bank__flex">
       <div class="bank__company">
@@ -86,10 +87,10 @@
       <img class="bank__image" src="./assets/task3/photo2.png" alt="">
     </div>
   </div>
-<!-- конец 3 задания -->
+  <!-- конец 3 задания -->
 
-<!-- 4 задание. Сделать форму отправки  -->
-<div class="form">
+  <!-- 4 задание. Сделать форму отправки  -->
+  <div class="form">
     <div class="form__content">
       <h1 class="form__title">Оставьте заявку</h1>
       <p class="form__subtitle">И наш специалист свяжется с вами</p>
@@ -114,8 +115,47 @@
       </div>
     </div>
   </div>
-<!-- конец 4 задания -->
+  <!-- конец 4 задания -->
 
+  <!-- 5 задание. Диаграммы -->
+  <div class="sale">
+    <div class="sale__toggle">
+      <p class="sale__period">Предыдущий период</p>
+      <label class="sale__switch">
+        <input type="checkbox">
+        <span class="sale__slider round"></span>
+      </label>
+      <p class="sale__plan">План</p>
+    </div>
+    <div class="sale__diagramm">
+      <p class="sale__title">Продажи</p>
+      <div class="sale__grid">
+        <div class="sale__card">
+          <div class="sale__block">
+            <p class="sale__subtitle">Количество проданных пицц</p>
+            <div class="sale__border"></div>
+          </div>
+          <div class="sale__content">
+            <canvas class="sale__canvas" id="create-country-diagramm"></canvas>
+            <canvas class="sale__canvas" id="create-city-diagramm"></canvas>
+          </div>
+        </div>
+        <div class="sale__card">
+          <div class="sale__block">
+            <p class="sale__subtitle">Выручка</p>
+            <div class="sale__border"></div>
+          </div>
+          <div class="sale__content">
+            <canvas class="sale__canvas" id="create-country-diagramm-2"></canvas>
+            <canvas class="sale__canvas" id="create-city-diagramm-2"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- конец 5 заданя -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
 </body>
 

@@ -69,11 +69,11 @@ catalog.forEach((item, index) => {
     help.style.display = 'block';
 
     if (index === 0) {
-      help.innerHTML += '<span style="background-color:rgba(163, 32, 24, 1); padding: 5px 5px 5px 10px; background-image: url(./assets/task2/star.svg); background-repeat: no-repeat; background-position: left;" >Хит продаж</span>';
+      help.innerHTML += '<span class="catalog__helpspan1">Хит продаж</span>';
     } if (index === 1) {
-      help.innerHTML += '<span style="background-color:rgba(224, 205, 28, 1);  padding: 5px 5px 5px 10px; background-image: url(./assets/task2/discount.svg); background-repeat: no-repeat; background-position: left;">Акция</span>';
+      help.innerHTML += '<span class="catalog__helpspan2">Акция</span>';
     } if (index === 2) {
-      help.innerHTML += '<span style="background-color:rgba(8, 122, 40, 1);  padding: 5px 5px 5px 10px; background-image: url(./assets/task2/rocket.svg); background-repeat: no-repeat; background-position: left;">Новинка</span>';
+      help.innerHTML += '<span class="catalog__helpspan3">Новинка</span>';
     }
   }
   catalogContainer.appendChild(card);
@@ -104,5 +104,206 @@ submitButton.addEventListener('click', (event) => {
   form.reset();
 });
 // конец 4 задания
+
+
+// начало 5 задания, диаграммы
+function createDiagrams(countryCanvasId, cityCanvasId, countryCenterText, countryScale = 1, cityScale = 1) {
+  const country = document.getElementById(countryCanvasId).getContext('2d');
+  const gradient1 = country.createRadialGradient(50.09, 50.14, 180, 50.09, 50.14, 65);
+  gradient1.addColorStop(0, '#9D121A');
+  gradient1.addColorStop(0.6, '#E83C46');
+  gradient1.addColorStop(1, '#9D121A');
+
+  const gradient2 = country.createRadialGradient(50.09, 50.14, 0, 50.09, 50.14, 65);
+  gradient2.addColorStop(0, '#DD9622');
+  gradient2.addColorStop(0.6, '#F9A620');
+  gradient2.addColorStop(1, '#DD9622');
+
+  const gradient3 = country.createRadialGradient(50.09, 50.14, 0, 50.09, 50.14, 65);
+  gradient3.addColorStop(0, '#262424');
+  gradient3.addColorStop(0.6, '#474444');
+  gradient3.addColorStop(1, '#262424');
+
+  const gradient4 = country.createRadialGradient(50.09, 50.14, 0, 50.09, 50.14, 65);
+  gradient4.addColorStop(0, '#676767');
+  gradient4.addColorStop((57.96 - (-230.93)) / (417.96 - (-230.93)), '#808080');
+  gradient4.addColorStop((129.07 - (-230.93)) / (417.96 - (-230.93)), '#676767');
+  gradient4.addColorStop(1, '#808080');
+
+  const totalCountPlugin = {
+    id: 'totalCountLabels',
+    afterDraw: (chart, args, options) => {
+      const ctx = chart.ctx;
+      ctx.save();
+      let total = chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+
+      if (chart.canvas.id === countryCanvasId) {
+        total *= countryScale;
+      } else if (chart.canvas.id === cityCanvasId) {
+        total *= cityScale;
+      }
+
+      const numberWithDollarSign = chart.canvas.id.includes("2") ? `$${total}` : total;
+
+      ctx.font = `${options.font.weight} ${options.font.size}px "${options.font.family}"`;
+      ctx.fillStyle = options.centerFontColor;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      const x = chart.canvas.clientWidth / 2;
+      const y = chart.canvas.clientHeight / 2.2;
+      ctx.fillText(numberWithDollarSign, x, y);
+
+      const offsetY = 35;
+      const customFontSize = 16;
+      const customFontWeight = 400;
+      ctx.font = `${customFontWeight} ${customFontSize}px "${options.font.family}"`;
+      ctx.fillText(countryCenterText, x, y + offsetY);
+      ctx.restore();
+    },
+  };
+
+
+  const countryDiagramm = new Chart(country, {
+    type: 'doughnut',
+    data: {
+      labels: [' - Россия', ' - Казахстан', ' - Узбекистан'],
+      datasets: [
+        {
+          label: 'Количество шт.',
+          data: [170, 125, 40],
+          backgroundColor: [gradient1, gradient2, gradient3],
+          borderWidth: 0,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        legend: {
+          position: 'bottom',
+          align: 'start',
+          labels: {
+            padding: 20,
+            usePointStyle: true,
+            pointStyle: 'circle',
+            boxWidth: 35,
+            font: {
+              family: 'Mail Sans',
+              size: 12,
+              weight: 400,
+              lineHeight: 1.2,
+              letterSpacing: '-4%',
+            },
+          },
+        },
+        title: {
+          display: true,
+          text: '     Страны',
+          position: 'top',
+          align: 'start',
+          font: {
+            size: 14,
+            weight: 500,
+            lineHeight: 1.57,
+            family: 'Mail Sans',
+          },
+          color: 'rgba(167, 167, 167, 1)',
+          padding: { top: 25 },
+        },
+        totalCountLabels: {
+          text: 'шт.',
+          centerFontColor: 'rgba(38, 36, 36, 1)',
+          font: {
+            family: 'Mail Sans',
+            size: 38,
+            weight: 600,
+          },
+        },
+      },
+      cutout: '78%',
+      rotation: -29 * Math.PI,
+    },
+    plugins: [totalCountPlugin],
+  });
+
+  const city = document.getElementById(cityCanvasId).getContext('2d');
+
+  const cityDiagramm = new Chart(city, {
+    type: 'doughnut',
+    data: {
+      labels: [' - Тюмень', ' - Петербург', ' - Нур-Султан', ' - Алма-Аты', ' - Ташкент'],
+      datasets: [
+        {
+          label: 'Количество шт.',
+          data: [200, 380, 200, 200, 170],
+          backgroundColor: [
+            gradient1,
+            'rgba(0, 95, 167, 1)',
+            gradient2,
+            gradient4,
+            gradient3,
+          ],
+          borderWidth: 0,
+        },
+      ],
+    },
+    options: {
+      rotation: -29 * Math.PI,
+      legend: {
+        position: 'bottom',
+      },
+      plugins: {
+        legend: {
+          position: 'bottom',
+          align: 'start',
+          labels: {
+            padding: 10,
+            usePointStyle: true,
+            pointStyle: 'circle',
+            boxWidth: 35,
+            font: {
+              family: 'Mail Sans',
+              size: 12,
+              weight: 400,
+              lineHeight: 1.2,
+              letterSpacing: '-4%',
+            },
+          },
+        },
+        title: {
+          display: true,
+          text: '     Города',
+          position: 'top',
+          align: 'start',
+          font: {
+            size: 14,
+            textAlign: 'left',
+            weight: 500,
+            lineHeight: 1.57,
+            family: 'Mail Sans',
+          },
+          color: 'rgba(167, 167, 167, 1)',
+          padding: { top: 25 },
+        },
+        totalCountLabels: {
+          text: 'шт.',
+          centerFontColor: 'rgba(38, 36, 36, 1)',
+          font: {
+            family: 'Mail Sans',
+            size: 38,
+            weight: 600,
+          },
+        },
+      },
+      cutout: '78%',
+      rotation: -29 * Math.PI,
+    },
+    plugins: [totalCountPlugin],
+  });
+}
+
+createDiagrams('create-country-diagramm', 'create-city-diagramm', 'шт.');
+createDiagrams('create-country-diagramm-2', 'create-city-diagramm-2', ' млн.', 130 / 335, 130 / 1150);
+// конец 5 задания
+
 
 
